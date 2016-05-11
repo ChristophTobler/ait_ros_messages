@@ -48,48 +48,48 @@ import genpy
 
 
 def vio_sensor_cb1(data):
-    global left1_pub, right1_pub
+    global cam0_pub, cam1_pub
 
-    left1_pub.publish(data.left_image)
-    right1_pub.publish(data.right_image)
+    cam0_pub.publish(data.left_image)
+    cam1_pub.publish(data.right_image)
 
 def vio_sensor_cb2(data):
-    global left2_pub, right2_pub
+    global cam2_pub, cam3_pub
 
-    left2_pub.publish(data.left_image)
-    right2_pub.publish(data.right_image)
+    cam2_pub.publish(data.left_image)
+    cam3_pub.publish(data.right_image)
 
 def vio_sensor_cb3(data):
-    global left3_pub, right3_pub
+    global cam4_pub, cam5_pub
 
-    left3_pub.publish(data.left_image)
-    right3_pub.publish(data.right_image)
+    cam4_pub.publish(data.left_image)
+    cam5_pub.publish(data.right_image)
 
 def vio_sensor_cb4(data):
-    global left4_pub, right4_pub
+    global cam6_pub, cam7_pub
 
-    left4_pub.publish(data.left_image)
-    right4_pub.publish(data.right_image)
+    cam6_pub.publish(data.left_image)
+    cam7_pub.publish(data.right_image)
 
 
 if __name__ == "__main__":
 
     rospy.init_node('image_publisher')
 
-    left1_pub = rospy.Publisher("left1_image", Image, queue_size=1)
-    right1_pub = rospy.Publisher("right1_image", Image, queue_size=1)
+    cam0_pub = rospy.Publisher("cam0_image", Image, queue_size=1)
+    cam1_pub = rospy.Publisher("cam1_image", Image, queue_size=1)
     rospy.Subscriber("/vio_sensor_1", VioSensorMsg, vio_sensor_cb1, queue_size=1)
 
-    left2_pub = rospy.Publisher("left2_image", Image, queue_size=1)
-    right2_pub = rospy.Publisher("right2_image", Image, queue_size=1)
+    cam2_pub = rospy.Publisher("cam2_image", Image, queue_size=1)
+    cam3_pub = rospy.Publisher("cam3_image", Image, queue_size=1)
     rospy.Subscriber("/vio_sensor_2", VioSensorMsg, vio_sensor_cb2, queue_size=1)
 
-    left3_pub = rospy.Publisher("left3_image", Image, queue_size=1)
-    right3_pub = rospy.Publisher("right3_image", Image, queue_size=1)
+    cam4_pub = rospy.Publisher("cam4_image", Image, queue_size=1)
+    cam5_pub = rospy.Publisher("cam5_image", Image, queue_size=1)
     rospy.Subscriber("/vio_sensor_3", VioSensorMsg, vio_sensor_cb3, queue_size=1)
 
-    left4_pub = rospy.Publisher("left4_image", Image, queue_size=1)
-    right4_pub = rospy.Publisher("right4_image", Image, queue_size=1)
+    cam6_pub = rospy.Publisher("cam6_image", Image, queue_size=1)
+    cam7_pub = rospy.Publisher("cam7_image", Image, queue_size=1)
     rospy.Subscriber("/vio_sensor_4", VioSensorMsg, vio_sensor_cb4, queue_size=1)
 
     rospy.spin()
